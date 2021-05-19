@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}}!</h1>
+    <h3>these are your recipes</h3>
+
+    <a href="/logout">Logout</a>
+    <a href="/create">Create</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Under 30 minutes?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in user.recipes %}
+                <tr>
+                    <td>{{recipe.name}}</td>
+                    <td>{% if recipe.prep %}Yes{% else %} No{% endif %}</td>
+                    <td><a href="/view_recipe/{{recipe.id}}">View Instructions</a> <a href="/update/{{recipe.id}}">Edit</a> <a href="/delete/{{recipe.id}}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html> 
+                
+                
+
+
+        

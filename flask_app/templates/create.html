@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename= 'style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add New Recipe</h1>
+    <a href="/logout">Logout</a>
+    <a href="/dashboard">Home</a>
+    <form action="/create_math" method="POST">
+        <p>Name: <input type="text" name="name"></p>
+        <p>Description: <textarea name="description" id="" cols="10" rows="10"></textarea></p>
+        <p>Instructions: <textarea name="instruction" id="" cols="30" rows="10"></textarea></p>
+        <p>Under 30 minutes to prepare? Yes<input type="radio" name="prep" value="1"> No<input type="radio" name="prep" value="0"></p>
+        <button>Create</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+</body>
+</html>
+
